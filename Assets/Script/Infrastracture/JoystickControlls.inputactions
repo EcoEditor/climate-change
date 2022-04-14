@@ -1,0 +1,114 @@
+{
+    "name": "JoystickControlls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "0198821f-5468-4870-8dc2-f622bfe566c9",
+            "actions": [
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "56bc7af3-fb17-4321-9604-987350137c93",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "e6f206ce-a9ea-436a-8177-626019d98af7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Up",
+                    "type": "Button",
+                    "id": "c655af7b-bbc2-4441-bfd5-dd31a6319248",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Down",
+                    "type": "Button",
+                    "id": "d81f980e-ac45-4bad-961f-77198593545e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TriggerButton",
+                    "type": "Button",
+                    "id": "e7dc8590-f0d8-4d40-a558-d0d941847117",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "be5fe6aa-b9ad-49ab-8f4f-c090a59ead34",
+                    "path": "<HID::ACRUX SL-6632 Dark Tornado Joystick>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcca20f5-abd3-4860-8f66-a96b8c45b948",
+                    "path": "<HID::ACRUX SL-6632 Dark Tornado Joystick>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bef7f9f-aaba-415d-b012-9a18a067b746",
+                    "path": "<HID::ACRUX SL-6632 Dark Tornado Joystick>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0253620-80bf-4910-9d2c-734394af5f81",
+                    "path": "<HID::ACRUX SL-6632 Dark Tornado Joystick>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7d00e68-9ded-47bf-8bfe-b02201f0aee8",
+                    "path": "<HID::ACRUX SL-6632 Dark Tornado Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
