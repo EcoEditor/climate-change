@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class tempJoystickController : MonoBehaviour
+public class JoystickView : MonoBehaviour
 {
     public GameObject controller;
 
     public Rigidbody pivot;
 
+        /*
     protected void Update()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -76,4 +77,5 @@ public class tempJoystickController : MonoBehaviour
                );
         }
     }
+        */
 }

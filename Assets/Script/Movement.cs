@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour
             point_truck.Translate(Vector3.left * point_track_speed * Time.deltaTime);
         }
 
+        /*
         if (Input.GetKey(KeyCode.S))
         {
             if (hook.position.y < hookLowerBorder) return;
@@ -71,5 +72,6 @@ public class Movement : MonoBehaviour
             if (hook.position.y - _initialPositionHook.y > float.Epsilon) return;
             hook.Translate(Vector3.forward * point_track_speed * Time.deltaTime);
         }
+        */
     }
 }
