@@ -27,6 +27,7 @@ namespace ClimateChange.Infrastracture
             _joystick.Gameplay.Enable();
 
             _joystick.Gameplay.Right.performed += MoveRight;
+            _joystick.Gameplay.Right.started += MoveRight;
             _joystick.Gameplay.Left.performed += MoveLeft;
             _joystick.Gameplay.Up.performed += MoveUp;
             _joystick.Gameplay.Down.performed += MoveDown;
@@ -46,16 +47,24 @@ namespace ClimateChange.Infrastracture
 
         private void MoveRight(InputAction.CallbackContext context)
         {
-            OnMoveRight?.Invoke(context);
+            while (context.performed)
+            {
+                Debug.Log("Moving right");
+                 OnMoveRight?.Invoke(context);
+            }
         }        
         
         private void MoveLeft(InputAction.CallbackContext context)
         {
+            Debug.Log("Moving Left");
+
             OnMoveLeft?.Invoke(context);
         }
 
         private void MoveUp(InputAction.CallbackContext context)
         {
+            Debug.Log("Moving Up");
+
             OnMoveUp?.Invoke(context);
         }
 

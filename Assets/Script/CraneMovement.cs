@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class CraneMovement : MonoBehaviour
 {
     [SerializeField]
     private GameObject joyStick;
@@ -27,8 +27,14 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float hookLowerBorder = 10f;
 
+    #region Fields
+
+
     private Vector3 _initialPositionHook;
     private Vector3 _initialPositionPointTrack;
+
+    #endregion
+
 
     protected void Start()
     {

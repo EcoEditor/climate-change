@@ -1,10 +1,101 @@
+using ClimateChange.Infrastracture;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class JoystickView : MonoBehaviour
+namespace ClimateChange.View
 {
-    public GameObject controller;
+    public class JoystickView : MonoBehaviour
+    {
 
-    public Rigidbody pivot;
+        public GameObject controller;
+
+        public Rigidbody pivot;
+
+        #region Fields
+
+        private JoystickInputHandler _joystickInputHandler;
+        private Transform _transform;
+
+        #endregion
+
+        #region Methods
+
+        protected void Awake()
+        {
+            _transform = transform;
+            _joystickInputHandler = FindObjectOfType<JoystickInputHandler>();
+
+            _joystickInputHandler.OnMoveUp += OnMoveUp;
+            _joystickInputHandler.OnMoveDown += OnMoveDown;
+            _joystickInputHandler.OnMoveLeft += OnMoveLeft;
+            _joystickInputHandler.OnMoveRight += OnMoveRight;
+        }
+
+        protected void OnDestroy()
+        {
+            _joystickInputHandler.OnMoveUp -= OnMoveUp;
+            _joystickInputHandler.OnMoveDown -= OnMoveDown;
+            _joystickInputHandler.OnMoveLeft -= OnMoveLeft;
+            _joystickInputHandler.OnMoveRight -= OnMoveRight;
+        }
+
+        private void OnMoveUp(InputAction.CallbackContext context)
+        {
+            if (pivot.rotation.eulerAngles.y < 90)
+            {
+                _transform.Rotate(0.10f, 0.0f, 0.0f, Space.Self);
+            }
+
+            _transform.eulerAngles = new Vector3(
+            _transform.eulerAngles.x * 0,
+            _transform.eulerAngles.y * 0,
+            _transform.eulerAngles.z * 0
+            );
+        }   
+        
+        private void OnMoveDown(InputAction.CallbackContext context)
+        {
+            if (pivot.rotation.eulerAngles.z < 90)
+            {
+                this.transform.Rotate(-0.10f, 0.0f, 0.0f, Space.Self);
+            }
+            this.transform.eulerAngles = new Vector3(
+            this.transform.eulerAngles.x * 0,
+            this.transform.eulerAngles.y * 0,
+            this.transform.eulerAngles.z * 0
+            );
+        }        
+        
+        private void OnMoveRight(InputAction.CallbackContext context)
+        {
+            if ((pivot.rotation.eulerAngles.z < 90) || (pivot.rotation.eulerAngles.z == 0))
+            {
+                this.transform.Rotate(0.0f, 0.0f, 0.10f, Space.Self);
+            }
+
+            this.transform.eulerAngles = new Vector3(
+            this.transform.eulerAngles.x * 0,
+            this.transform.eulerAngles.y * 0,
+            this.transform.eulerAngles.z * 0
+            );
+        }       
+        
+        private void OnMoveLeft(InputAction.CallbackContext context)
+        {
+            if ((pivot.rotation.eulerAngles.z > 270) || (pivot.rotation.eulerAngles.z == 0))
+            {
+                this.transform.Rotate(0.0f, 0.0f, -0.10f, Space.Self);
+            }
+
+            this.transform.eulerAngles = new Vector3(
+            this.transform.eulerAngles.x * 0,
+            this.transform.eulerAngles.y * 0,
+            this.transform.eulerAngles.z * 0
+            );
+        }
+
+
+        #endregion
 
         /*
     protected void Update()
@@ -78,4 +169,5 @@ public class JoystickView : MonoBehaviour
         }
     }
         */
+    }
 }

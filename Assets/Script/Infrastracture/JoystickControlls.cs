@@ -78,7 +78,7 @@ public partial class @JoystickControlls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""be5fe6aa-b9ad-49ab-8f4f-c090a59ead34"",
                     ""path"": ""<HID::ACRUX SL-6632 Dark Tornado Joystick>/stick/right"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Right"",
