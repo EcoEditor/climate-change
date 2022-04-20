@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,9 @@ namespace ClimateChange.Infrastracture
         #endregion
 
         #region Fields
+
         private JoystickControlls _joystick;
+       
         #endregion
 
         #region Methods
@@ -26,8 +29,8 @@ namespace ClimateChange.Infrastracture
             _joystick = new JoystickControlls();
             _joystick.Gameplay.Enable();
 
+
             _joystick.Gameplay.Right.performed += MoveRight;
-            _joystick.Gameplay.Right.started += MoveRight;
             _joystick.Gameplay.Left.performed += MoveLeft;
             _joystick.Gameplay.Up.performed += MoveUp;
             _joystick.Gameplay.Down.performed += MoveDown;
@@ -47,37 +50,81 @@ namespace ClimateChange.Infrastracture
 
         private void MoveRight(InputAction.CallbackContext context)
         {
-            while (context.performed)
+            StartCoroutine(MoveRightRoutine(context));
+        }
+
+        private IEnumerator MoveRightRoutine(InputAction.CallbackContext context)
+        {
+            while(context.phase == InputActionPhase.Performed)
             {
-                Debug.Log("Moving right");
-                 OnMoveRight?.Invoke(context);
+                yield return null;
+                Debug.Log("Moving right with routine");
+                OnMoveRight?.Invoke(context);
             }
-        }        
+        }
         
         private void MoveLeft(InputAction.CallbackContext context)
         {
             Debug.Log("Moving Left");
+            StartCoroutine(MoveLeftRoutine(context));
+        }
 
-            OnMoveLeft?.Invoke(context);
+        private IEnumerator MoveLeftRoutine(InputAction.CallbackContext context)
+        {
+            while (context.phase == InputActionPhase.Performed)
+            {
+                yield return null;
+                Debug.Log("Moving left with routine");
+                OnMoveLeft?.Invoke(context);
+            }
         }
 
         private void MoveUp(InputAction.CallbackContext context)
         {
             Debug.Log("Moving Up");
+            StartCoroutine(MoveUpRoutine(context));
+        }
 
-            OnMoveUp?.Invoke(context);
+        private IEnumerator MoveUpRoutine(InputAction.CallbackContext context)
+        {
+            while (context.phase == InputActionPhase.Performed)
+            {
+                yield return null;
+                Debug.Log("Moving Up with routine");
+                OnMoveUp?.Invoke(context);
+            }
         }
 
         private void MoveDown(InputAction.CallbackContext context)
         {
             Debug.Log("Moving Down");
-            OnMoveDown?.Invoke(context);
-        }        
-        
+            StartCoroutine(MoveDownRoutine(context));
+        }
+
+        private IEnumerator MoveDownRoutine(InputAction.CallbackContext context)
+        {
+            while (context.phase == InputActionPhase.Performed)
+            {
+                yield return null;
+                Debug.Log("Moving down with routine");
+                OnMoveDown?.Invoke(context);
+            }
+        }
+
         private void PressButton(InputAction.CallbackContext context)
         {
             Debug.Log("Trigger Button Pressed");
-            OnButtonPress?.Invoke(context);
+            StartCoroutine(PressButtonRoutine(context));
+        }
+
+        private IEnumerator PressButtonRoutine(InputAction.CallbackContext context)
+        {
+            while (context.phase == InputActionPhase.Performed)
+            {
+                yield return null;
+                Debug.Log("Button is pressed");
+                OnButtonPress?.Invoke(context);
+            }
         }
 
         #endregion

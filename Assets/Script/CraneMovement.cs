@@ -1,3 +1,4 @@
+using ClimateChange.Infrastracture;
 using UnityEngine;
 
 public class CraneMovement : MonoBehaviour
@@ -33,8 +34,15 @@ public class CraneMovement : MonoBehaviour
     private Vector3 _initialPositionHook;
     private Vector3 _initialPositionPointTrack;
 
+    private JoystickInputHandler _joystickInputHandler;
+
     #endregion
 
+    protected void Awake()
+    {
+        _joystickInputHandler = FindObjectOfType<JoystickInputHandler>();
+        //_joystickInputHandler.OnButtonPress += 
+    }
 
     protected void Start()
     {

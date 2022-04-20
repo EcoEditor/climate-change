@@ -41,58 +41,80 @@ namespace ClimateChange.View
 
         private void OnMoveUp(InputAction.CallbackContext context)
         {
-            if (pivot.rotation.eulerAngles.y < 90)
+            if (context.phase == InputActionPhase.Performed)
             {
-                _transform.Rotate(0.10f, 0.0f, 0.0f, Space.Self);
+                if (pivot.rotation.eulerAngles.y < 90)
+                {
+                    _transform.Rotate(0.10f, 0.0f, 0.0f, Space.Self);
+                }
+            } else
+            {
+                _transform.eulerAngles = new Vector3(
+                _transform.eulerAngles.x * 0,
+                _transform.eulerAngles.y * 0,
+                _transform.eulerAngles.z * 0
+                );
             }
-
-            _transform.eulerAngles = new Vector3(
-            _transform.eulerAngles.x * 0,
-            _transform.eulerAngles.y * 0,
-            _transform.eulerAngles.z * 0
-            );
         }   
         
         private void OnMoveDown(InputAction.CallbackContext context)
         {
-            if (pivot.rotation.eulerAngles.z < 90)
+            if (context.phase == InputActionPhase.Performed)
             {
-                this.transform.Rotate(-0.10f, 0.0f, 0.0f, Space.Self);
+                Debug.Log("Joystick moving down");
+                if (pivot.rotation.eulerAngles.z < 90)
+                {
+                    _transform.Rotate(-0.10f, 0.0f, 0.0f, Space.Self);
+                }
+            } else
+            {
+                _transform.eulerAngles = new Vector3(
+                _transform.eulerAngles.x * 0,
+                _transform.eulerAngles.y * 0,
+                _transform.eulerAngles.z * 0
+                );
             }
-            this.transform.eulerAngles = new Vector3(
-            this.transform.eulerAngles.x * 0,
-            this.transform.eulerAngles.y * 0,
-            this.transform.eulerAngles.z * 0
-            );
         }        
-        
-        private void OnMoveRight(InputAction.CallbackContext context)
-        {
-            if ((pivot.rotation.eulerAngles.z < 90) || (pivot.rotation.eulerAngles.z == 0))
-            {
-                this.transform.Rotate(0.0f, 0.0f, 0.10f, Space.Self);
-            }
-
-            this.transform.eulerAngles = new Vector3(
-            this.transform.eulerAngles.x * 0,
-            this.transform.eulerAngles.y * 0,
-            this.transform.eulerAngles.z * 0
-            );
-        }       
         
         private void OnMoveLeft(InputAction.CallbackContext context)
         {
-            if ((pivot.rotation.eulerAngles.z > 270) || (pivot.rotation.eulerAngles.z == 0))
-            {
-                this.transform.Rotate(0.0f, 0.0f, -0.10f, Space.Self);
-            }
+            Debug.Log("Joystick moving right");
 
-            this.transform.eulerAngles = new Vector3(
-            this.transform.eulerAngles.x * 0,
-            this.transform.eulerAngles.y * 0,
-            this.transform.eulerAngles.z * 0
-            );
+            if (context.phase == InputActionPhase.Performed)
+            {
+                if ((pivot.rotation.eulerAngles.z < 90) || (pivot.rotation.eulerAngles.z == 0))
+                {
+                    _transform.Rotate(0.0f, 0.0f, 0.10f, Space.Self);
+                }
+            } 
+            else
+            {
+                _transform.eulerAngles = new Vector3(
+                _transform.eulerAngles.x * 0,
+                _transform.eulerAngles.y * 0,
+                _transform.eulerAngles.z * 0
+                );
+            }
+        }       
+        
+        private void OnMoveRight(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+            {
+                if ((pivot.rotation.eulerAngles.z > 270) || (pivot.rotation.eulerAngles.z == 0))
+                {
+                    this.transform.Rotate(0.0f, 0.0f, -0.10f, Space.Self);
+                }
+            } else
+            {
+                this.transform.eulerAngles = new Vector3(
+                this.transform.eulerAngles.x * 0,
+                this.transform.eulerAngles.y * 0,
+                this.transform.eulerAngles.z * 0
+                );
+            }
         }
+
 
 
         #endregion
