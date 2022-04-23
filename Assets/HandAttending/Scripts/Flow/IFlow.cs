@@ -1,7 +1,7 @@
 namespace ClimateChange.HandAttendingTest
 {
-    public enum AnimationName
+    public interface IFlow
     {
-        OnMove = 0,
+        void Execute();
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections;
+using RSG;
 using UnityEngine;
 
 namespace ClimateChange.HandAttendingTest
@@ -15,6 +17,10 @@ namespace ClimateChange.HandAttendingTest
         [SerializeField] 
         private AnimationName _handMoveAnimationName;
 
+        [Tooltip("Setup minimum (x) and maximum (y) animation speed")]
+        [SerializeField]
+        private Vector2 _animationSpeedRange;
+
         #endregion
         
         #region Fields
@@ -30,11 +36,26 @@ namespace ClimateChange.HandAttendingTest
             _handMoveAnimationHash = Animator.StringToHash(_handMoveAnimationName.ToString());
         }
 
-        public void PlayAnimation(Hand hand, float speed)
+        public IPromise PlayAnimationWithDelay(float delay, IPendingPromise p)
         {
-            if (hand != _hand) return;
-            _animator.speed = speed;
+            var promise = new Promise();
+            StartCoroutine(PlayAnimationInternal(delay, p));
+            return promise;
+        }
+
+        private IEnumerator PlayAnimationInternal(float delay, IPendingPromise p)
+        {
+            yield return new WaitForSeconds(delay);
+            var animationSpeed = Random.Range(_animationSpeedRange.x, _animationSpeedRange.y);
+            _animator.speed = animationSpeed;
             _animator.SetTrigger(_handMoveAnimationHash);
+            
+            p.Resolve();
+        }
+
+        public void HaltAnimation()
+        {
+            StopAllCoroutines();
         }
 
         #endregion

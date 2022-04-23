@@ -8,7 +8,10 @@ namespace ClimateChange.HandAttendingTest
         #region Editor
 
         [SerializeField] 
-        private HandAttendingTestModel _model;
+        private HandAttendingTestModel _testModel;
+
+        [SerializeField] 
+        private DigitsModel _digitsModel;
 
         [SerializeField] 
         private HandDetector _rightHandDetector;
@@ -18,6 +21,9 @@ namespace ClimateChange.HandAttendingTest
         
         [SerializeField] 
         private GazeDetector _gazeDetector;
+
+        [SerializeField] 
+        private HandAttendingTestFlow _testFlow;
         
         #endregion
         
@@ -32,26 +38,31 @@ namespace ClimateChange.HandAttendingTest
 
         protected void Awake()
         {
-            _generator = new HandAttendingTestGenerator(_model);
-            _model.Initialize(_rightHandDetector, _leftHandDetector, _gazeDetector);
-            _detectionController = new DetectionController(_model.Detecatbles);
+            _generator = new HandAttendingTestGenerator(_testModel, _digitsModel);
+            _testModel.Initialize(_rightHandDetector, _leftHandDetector, _gazeDetector);
+            _digitsModel.Initialize();
+            _detectionController = new DetectionController(_testModel.Detecatbles);
             _detectionController.OnAllDetected += RequestStartTest;
         }
 
         private void RequestStartTest(bool isReady)
         {
-            if (!isReady) return;
+            if (!isReady)
+            {
+                TerminateTest();
+                return;
+            }
             StartTest();
         }
         
         private void StartTest()
-        {
-            
+        { 
+            _testFlow.Execute();
         }
 
-        private void RestartTest()
+        private void TerminateTest()
         {
-            
+            _testFlow.Terminate();
         }
 
         private void TestCompleted()

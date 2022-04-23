@@ -25,14 +25,12 @@ namespace ClimateChange.HandAttendingTest
         {
             if (_didDetect) return;
             _didDetect = true;
-            Debug.Log("Did detect");
             OnDetected?.Invoke();
         }
 
         public void GazeDetectionLoss()
         {
             _didDetect = false;
-            Debug.Log("Detection lost");
             OnDetectionLost?.Invoke();
         }
         

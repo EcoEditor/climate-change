@@ -2,7 +2,7 @@ using System;
 
 namespace ClimateChange.HandAttendingTest
 {
-    public class DetectionController
+    public class DetectionController : IDisposable
     {
         public event Action<bool> OnAllDetected;
         
@@ -20,6 +20,18 @@ namespace ClimateChange.HandAttendingTest
             
             _detectables.Gaze.OnDetected += UpdateDetectionStatus;
             _detectables.Gaze.OnDetectionLost += UpdateDetectionStatus;
+        }
+
+        public void Dispose()
+        {
+            _detectables.RightHand.OnDetected -= UpdateDetectionStatus;
+            _detectables.RightHand.OnDetectionLost -= UpdateDetectionStatus;
+
+            _detectables.LeftHand.OnDetected -= UpdateDetectionStatus;
+            _detectables.LeftHand.OnDetectionLost -= UpdateDetectionStatus;
+            
+            _detectables.Gaze.OnDetected -= UpdateDetectionStatus;
+            _detectables.Gaze.OnDetectionLost -= UpdateDetectionStatus;
         }
         
         private void UpdateDetectionStatus()

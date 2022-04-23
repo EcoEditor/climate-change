@@ -95,7 +95,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f9e27b4092d5c4696be76341f98eb294, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,6 +132,8 @@ MonoBehaviour:
   _hand: 0
   _animator: {fileID: 4802743044943827377}
   _handMoveAnimationName: 0
+  _animationSpeedRange: {x: 1, y: 2}
+  _animationIntervalDuration: {x: 0, y: 2}
 --- !u!65 &3820102474469900315
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,6 +5,13 @@ namespace ClimateChange.HandAttendingTest.Models
     [CreateAssetMenu(fileName = "HandAttendingTestModel", menuName = "Hand Attending Test/Models/Hand Attending Test model")]
     public class HandAttendingTestModel : ScriptableObject
     {
+        #region Editor
+
+        [SerializeField] 
+        private float _testDuration = 14f;
+
+        #endregion
+        
         #region Fields
 
         private Detectables _detactable;
@@ -27,6 +34,7 @@ namespace ClimateChange.HandAttendingTest.Models
         
         #region Properties
 
+        public float TestDuration => _testDuration;
         public Detectables Detecatbles => _detactable;
 
         #endregion

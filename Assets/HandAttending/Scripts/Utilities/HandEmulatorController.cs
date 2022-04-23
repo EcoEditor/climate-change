@@ -26,6 +26,7 @@ namespace ClimateChange.HandAttendingTest
         protected void Awake()
         {
             _hands.position = _initialPosition;
+            LowerHands();
         }
 
         protected void Update()
