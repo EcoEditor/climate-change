@@ -58,6 +58,7 @@ namespace ClimateChange.HandAttendingTest
         
         #region Properties
 
+        public Digits Digits => _digits;
         public int MaxDigitPerTest => _maxDigitPerTest;
 
         #endregion

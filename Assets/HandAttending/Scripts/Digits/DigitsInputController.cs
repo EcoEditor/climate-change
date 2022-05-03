@@ -26,5 +26,32 @@ namespace ClimateChange.HandAttendingTest
             if (_digits.Length < 1) return;
             //_digits -= digit;
         }
+
+        public void ConfirmDigits()
+        {
+            var isCorrect = CheckEnteredDigitSequence();
+
+            if (isCorrect)
+            {
+                Debug.Log("Test is passed");
+                return;
+            }
+            
+            Debug.Log("Test Failed!");
+        }
+
+        private bool CheckEnteredDigitSequence()
+        {
+            var digitSequence = _digitModel.Digits.Digit;
+            var digitIntToString = string.Empty;
+
+            for (int i = 0; i < digitSequence.Length; i++)
+            {
+                digitIntToString += digitSequence[i].ToString();
+                Debug.Log(digitIntToString);
+            }
+
+            return string.Equals(digitIntToString, _digits);
+        }
     }
 }
