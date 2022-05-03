@@ -17,13 +17,13 @@ namespace ClimateChange.HandAttendingTest
     public class HandAttendingTestFlow : MonoBehaviour, IFlow
     {
         #region Editor
+
+        [SerializeField] 
+        private DigitsController _digitsController;
         
         [Tooltip("Setup minimum (x) and maximum (y) animation interval duration")]
         [SerializeField] 
         private Vector2 _animationIntervalDuration;
-
-        [SerializeField] 
-        private DigitsModel _digitsModel;
 
         [SerializeField] 
         private float _testDuration = 14f;
@@ -33,7 +33,6 @@ namespace ClimateChange.HandAttendingTest
         #region Fields
         
         private bool _isTerminated;
-        private int _digitIndex = 0;
 
         #endregion
         
@@ -42,8 +41,8 @@ namespace ClimateChange.HandAttendingTest
         public void Execute()
         {
             var startTime = Time.time;
+            _digitsController.Setup();
             _isTerminated = false;
-            _digitIndex = 0;
             
             CoroutineService.Instance.Delay(2f)
                 .Then(() =>
@@ -127,14 +126,14 @@ namespace ClimateChange.HandAttendingTest
         private IPromise DigitAppearState()
         {
             var p = new Promise();
-            _digitsModel.ChangeDigit(_digitIndex);
-            _digitIndex++;
+            
             if (_isTerminated)
             {
                 Debug.Log("Promise Show Digits has been rejected due to termination");
                 p.Reject(new Exception());
             }
-            p.Resolve();
+            
+            _digitsController.RequestShowDigit(p);
 
             return p;
         }

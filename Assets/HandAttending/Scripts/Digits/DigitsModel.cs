@@ -11,13 +11,14 @@ namespace ClimateChange.HandAttendingTest
         #region Events
 
         public event Action<int> OnDigitChanged;
+        public event Action<string> OnDigitEntered;
         
         #endregion
         
         #region Editor
 
         [SerializeField]
-        private int _digitsCountPerTest = 3;
+        private int _maxDigitPerTest = 2;        
         
         #endregion
         
@@ -33,10 +34,10 @@ namespace ClimateChange.HandAttendingTest
         {
             _digits = new Digits
             {
-                Digit = new int[_digitsCountPerTest]
+                Digit = new int[_maxDigitPerTest]
             };
 
-            for (int i = 0; i < _digitsCountPerTest - 1; i++)
+            for (int i = 0; i < _maxDigitPerTest - 1; i++)
             {
                 _digits.Digit[i] = GenerateRandomDigit();
             }
@@ -48,7 +49,7 @@ namespace ClimateChange.HandAttendingTest
             return random;
         }
 
-        public void ChangeDigit(int index)
+        public void UpdateNextDigit(int index)
         {
             OnDigitChanged?.Invoke(_digits.Digit[index]);
         }
@@ -57,7 +58,7 @@ namespace ClimateChange.HandAttendingTest
         
         #region Properties
 
-        public int DigitsCountPerTest => _digitsCountPerTest;
+        public int MaxDigitPerTest => _maxDigitPerTest;
 
         #endregion
     }

@@ -42,7 +42,7 @@ namespace ClimateChange.HandAttendingTest
             _testModel.Initialize(_rightHandDetector, _leftHandDetector, _gazeDetector);
             _digitsModel.Initialize();
             _detectionController = new DetectionController(_testModel.Detecatbles);
-            _detectionController.OnAllDetected += RequestStartTest;
+            _detectionController.OnDetectionChanged += RequestStartTest;
         }
 
         private void RequestStartTest(bool isReady)

@@ -4,7 +4,7 @@ namespace ClimateChange.HandAttendingTest
 {
     public class DetectionController : IDisposable
     {
-        public event Action<bool> OnAllDetected;
+        public event Action<bool> OnDetectionChanged;
         
         private Detectables _detectables;
 
@@ -36,10 +36,11 @@ namespace ClimateChange.HandAttendingTest
         
         private void UpdateDetectionStatus()
         {
-            var allDetected = _detectables.RightHand.DidDetect 
-                              & _detectables.LeftHand.DidDetect 
+            var allDetected = _detectables.RightHand.DidDetect
+                              & _detectables.LeftHand.DidDetect
                               & _detectables.Gaze.DidDetect;
-            OnAllDetected?.Invoke(allDetected);
+
+            OnDetectionChanged?.Invoke(allDetected);
         }
     }
 
