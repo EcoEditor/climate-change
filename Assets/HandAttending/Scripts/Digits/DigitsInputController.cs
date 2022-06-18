@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ClimateChange.HandAttendingTest
@@ -6,25 +7,34 @@ namespace ClimateChange.HandAttendingTest
     {
         #region Editor
 
-        [SerializeField] private DigitsModel _digitModel;
+        [SerializeField] 
+        private DigitsModel _digitModel;
+
+        [SerializeField] 
+        private DigitInputScreenView _digitInputScreenView;
         
         #endregion
         
         #region Fields
 
-        private string _digits;
+        private string _digits = string.Empty;
         
         #endregion
+        
+        #region Methods
+        
         public void AddDigit(string digit)
         {
             if (_digits.Length >= _digitModel.MaxDigitPerTest) return;
             _digits += digit;
+            _digitInputScreenView.ShowDigit(_digits);
         }
 
-        public void DeleteDigit(string digit)
+        public void DeleteDigit()
         {
             if (_digits.Length < 1) return;
-            //_digits -= digit;
+            _digits = _digits.Remove(_digits.Length - 1, 1);
+            _digitInputScreenView.ShowDigit(_digits);
         }
 
         public void ConfirmDigits()
@@ -34,9 +44,11 @@ namespace ClimateChange.HandAttendingTest
             if (isCorrect)
             {
                 Debug.Log("Test is passed");
+                _digitInputScreenView.ShowDigit("Correct");
                 return;
             }
             
+            _digitInputScreenView.ShowDigit("Please repeat the test");
             Debug.Log("Test Failed!");
         }
 
@@ -53,5 +65,7 @@ namespace ClimateChange.HandAttendingTest
 
             return string.Equals(digitIntToString, _digits);
         }
+        
+        #endregion
     }
 }

@@ -1,24 +1,25 @@
 using System.Collections;
-using Magnifica.LenaTest.View;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace Magnifica.LenaTest.Controllers
+namespace ClimateChange.HandAttendingTest
 {
     public class ButtonController : MonoBehaviour
     {
+        #region Events
+        
+        [SerializeField]
+        private UnityEvent _OnClick;
+        
+        #endregion
+        
         #region Editor
-
-        [SerializeField] 
-        private GameController _controller;
-
-        [SerializeField] 
-        private ButtonView _buttonView;
         
         [SerializeField] 
         private Transform _movingObject;
         
         [SerializeField] 
-        private Transform _contactZone;
+        private Transform _actionZone;
 
         [SerializeField] 
         private float _pressSpeed = 0.4f;
@@ -53,20 +54,19 @@ namespace Magnifica.LenaTest.Controllers
         private void OnPressButton()
         {
             if (!_isInteractable) return;
-            if (_movingObject.position.y <= _contactZone.position.y)
+            if (_movingObject.position.z <= _actionZone.position.z)
             {
                 ButtonPressed();
                 return;
             }
             
-            _movingObject.Translate(Vector3.down * _pressSpeed * Time.deltaTime, Space.Self);
+            _movingObject.Translate(Vector3.forward * _pressSpeed * Time.deltaTime, Space.Self);
         }
 
         private void ButtonPressed()
         {
-            _controller.StartRound();
-            _buttonView.Deactivate();
             _isInteractable = false;
+            _OnClick?.Invoke();
             OnReleaseButton();
         }
 
@@ -85,8 +85,15 @@ namespace Magnifica.LenaTest.Controllers
                 yield return null;
             }
 
-            _buttonView.Activate();
             _isInteractable = true;
+        }
+
+        [ContextMenu("Test Press")]
+        public void TestPress()
+        {
+            _isInteractable = false;
+            _OnClick?.Invoke();
+            OnReleaseButton();
         }
         
         #endregion

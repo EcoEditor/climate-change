@@ -7,9 +7,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddDigit
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClimateChange.HandAttendingTest.DigitsInputController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833560082846615480, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769770, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_Name
-      value: DigitButton
+      value: FourButton
       objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_RootOrder
@@ -17,15 +45,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.54
       objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.94
       objectReference: {fileID: 0}
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,6 +82,10 @@ PrefabInstance:
     - target: {fileID: 2528379445042769771, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528379445769532621, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}
+      propertyPath: m_text
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0e91c1e3a06245ae90341beaf5c81fb, type: 3}

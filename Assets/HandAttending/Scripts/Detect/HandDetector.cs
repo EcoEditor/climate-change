@@ -14,8 +14,16 @@ namespace ClimateChange.HandAttendingTest
         
         #region Editor
 
+        [Header("Debug")]
         [SerializeField] 
-        private Hand _hand;
+        private bool DEBUG_MODE;
+        
+        [SerializeField] 
+        private Hand _hand;        
+        
+        [Header("Hand tracking")]
+        [SerializeField] 
+        private OVRHand.Hand _ovrHand;
 
         [SerializeField] 
         private bool _didDetect;
@@ -26,15 +34,35 @@ namespace ClimateChange.HandAttendingTest
         
         protected void OnTriggerEnter(Collider other)
         {
-            var handController = other.gameObject.GetComponent<AttendingHandController>();
-            if (handController == null) return;
-            if (_hand != handController.Hand) return;
-            Detect();
+            if (DEBUG_MODE)
+            {
+                var handController = other.gameObject.GetComponent<AttendingHandController>();
+                if (handController == null) return;
+                if (_hand != handController.Hand) return;
+                Detect();
+            }
+
+            var ovrHand = other.GetComponentInParent<OVRHand>();
+            if (ovrHand == null) return;
+            if (ovrHand.MyHand == _ovrHand)
+            {
+                Detect();
+            }
         }
 
         protected void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.GetComponent<AttendingHandController>())
+            if (DEBUG_MODE)
+            {
+                if (other.gameObject.GetComponent<AttendingHandController>())
+                {
+                    DetectionLost();
+                }
+            }
+            
+            var ovrHand = other.GetComponentInParent<OVRHand>();
+            if (ovrHand == null) return;
+            if (ovrHand.MyHand == _ovrHand)
             {
                 DetectionLost();
             }

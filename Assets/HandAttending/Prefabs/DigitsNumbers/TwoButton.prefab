@@ -7,13 +7,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddDigit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ClimateChange.HandAttendingTest.DigitsInputController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4756592843982504099, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: _OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8675702437396015216, guid: 98c096832058447348326a063157429a, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8675702437396015216, guid: 98c096832058447348326a063157429a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 8675702437396015216, guid: 98c096832058447348326a063157429a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -53,7 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675702437396015217, guid: 98c096832058447348326a063157429a, type: 3}
       propertyPath: m_Name
-      value: OneButton
+      value: TwoButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675702438649099222, guid: 98c096832058447348326a063157429a, type: 3}
+      propertyPath: m_text
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c096832058447348326a063157429a, type: 3}

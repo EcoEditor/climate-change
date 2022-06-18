@@ -1,32 +1,42 @@
+using System;
 using UnityEngine;
 
-public class Hook : MonoBehaviour
+namespace ClimateChange.Gameplay
 {
-
-    public float speed = 2;
-
-    public double CraneLevel = 14.2;
-    public double FloorLevel = 0;
-
-    public GameObject crane;
-
-
-    protected void Update()
+    public class Hook : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.Space))
+        [SerializeField] private SphereCollider _sphereCollider;
+        [SerializeField] private string _ringTag = "Ring";
+ 
+        private Rigidbody _rigidbody;
+
+        protected void Awake()
         {
-            if (this.transform.position.y > FloorLevel)
-            {
-                transform.Translate(Vector3.down * speed * Time.deltaTime);
-            }
+            _rigidbody = GetComponent<Rigidbody>();
         }
 
-        if (Input.GetKey(KeyCode.D))
+        protected void OnTriggerEnter(Collider other)
         {
-            if (this.transform.position.y < CraneLevel)
-            {
-                transform.Translate(Vector3.up * speed * Time.deltaTime);
-            }
+            if (!other.gameObject.CompareTag(_ringTag)) return;
+            var brick = other.GetComponentInParent<Brick>();
+            if (brick == null) return;
+            if (brick.DidCollect) return;
+            AttachBrickToHook(brick);
+        }
+
+        private void AttachBrickToHook(Brick brick)
+        {
+            brick.Pickup(_rigidbody);
+        }
+
+        private void DetachBrickFromHook()
+        {
+            
+        }
+        
+        public void SetColliderRadius(float radius)
+        {
+            _sphereCollider.radius = radius;
         }
     }
 }

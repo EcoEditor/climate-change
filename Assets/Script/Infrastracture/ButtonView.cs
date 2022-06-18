@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Magnifica.LenaTest.View
+namespace ClimateChange.HandAttendingTest
 {
     public class ButtonView : MonoBehaviour
     {

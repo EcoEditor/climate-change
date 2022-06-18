@@ -4,7 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/HandAttending/Scenes/HandAttendingTest.unity
+    guid: d8476f27fb33740cfbe7687c9468293a
+  - enabled: 0
+    path: Assets/Oculus/SampleFramework/Usage/HandsInteractionTrainScene.unity
+    guid: a9c41884ef0c347628dfd8a4af4a022e
+  - enabled: 0
+    path: Assets/HandAttending/Scenes/TestHandTracking.unity
+    guid: de74a2b02dddf4a8e8d70d44e6e37dd7
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 780dde25dc65b4239bed45bc5b725003, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0d2cea34f25104453946ccf289392897, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 3d8fb9506ed554734a310811c9fa785c, type: 2}
